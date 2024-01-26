@@ -1,0 +1,13 @@
+*/dist
+*/node_modules
+/node_modules
+/dist
+.eslintcache
+/saved-files
+
+/.vscode
+/.idea
+*.sublime-project
+*.sublime-workspace
+node_modules/
+dist/
