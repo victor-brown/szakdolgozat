@@ -1,5 +1,3 @@
-import { parse } from "@babel/parser";
-
 export const ASCII_DECODER_FUNCTION_NAME = "decodeAsciiArray";
 export const ASCII_DECODER_FUNCTION = `function ${ASCII_DECODER_FUNCTION_NAME} (asciiArray){
   let result = "";
@@ -49,12 +47,4 @@ export const getFalseExpression = (): string => {
   return FALSE_BOOLEAN_EXPRESSIONS[
     Math.floor(Math.random() * FALSE_BOOLEAN_EXPRESSIONS.length)
   ];
-};
-
-export const nodeBuilder = (sourceCode: string): any => {
-  try {
-    return parse(sourceCode).program.body[0];
-  } catch (error) {
-    throw new Error("Failed to parse soruce code");
-  }
 };

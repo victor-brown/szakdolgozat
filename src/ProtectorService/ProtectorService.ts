@@ -6,7 +6,6 @@ import generate from "@babel/generator";
 import {
   ASCII_DECODER_FUNCTION,
   FRACTIAL_NUMBER_PARSER_FUNCTION,
-  nodeBuilder,
 } from "./moduls/TransformModule/transformers/Decoders";
 
 export class ProtectorService {
@@ -42,8 +41,10 @@ export class ProtectorService {
   private addDecodersToBody(): void {
     if (!this.syntaxTree) throw new Error("Don't have syntax tree");
 
-    const stringDecoder = nodeBuilder(ASCII_DECODER_FUNCTION);
-    const fractionalDecoder = nodeBuilder(FRACTIAL_NUMBER_PARSER_FUNCTION);
+    const stringDecoder = this.parser.nodeBuilder(ASCII_DECODER_FUNCTION);
+    const fractionalDecoder = this.parser.nodeBuilder(
+      FRACTIAL_NUMBER_PARSER_FUNCTION
+    );
     this.syntaxTree.program.body.push(stringDecoder);
     this.syntaxTree.program.body.push(fractionalDecoder);
   }
