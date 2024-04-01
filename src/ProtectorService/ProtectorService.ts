@@ -21,9 +21,13 @@ export class ProtectorService {
     this.syntaxTree = this.parser.createSyntaxTree(sourceCode);
     console.log("==========PROTECTING==========");
 
-    this.syntaxTree.program.body = this.transformer.transform(
-      this.syntaxTree.program.body
-    ) as any;
+    try {
+      this.syntaxTree.program.body = this.transformer.transform(
+        this.syntaxTree.program.body,
+      ) as any;
+    } catch (error: any) {
+      console.error(error.message);
+    }
 
     this.addDecodersToBody();
   }
@@ -43,7 +47,7 @@ export class ProtectorService {
 
     const stringDecoder = this.parser.nodeBuilder(ASCII_DECODER_FUNCTION);
     const fractionalDecoder = this.parser.nodeBuilder(
-      FRACTIAL_NUMBER_PARSER_FUNCTION
+      FRACTIAL_NUMBER_PARSER_FUNCTION,
     );
     this.syntaxTree.program.body.push(stringDecoder);
     this.syntaxTree.program.body.push(fractionalDecoder);

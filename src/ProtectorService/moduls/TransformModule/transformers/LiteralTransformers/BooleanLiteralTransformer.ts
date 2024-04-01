@@ -5,7 +5,7 @@ import {
 } from "@babel/types";
 import { type Transformer } from "../Transformer";
 import { getFalseExpression, getTrueExpression } from "../Decoders";
-import { SourceCodeParser } from "src/ProtectorService/moduls/ParserModule";
+import { SourceCodeParser } from "../../../ParserModule";
 
 export class BooleanLiteralTransformer implements Transformer {
   parser = new SourceCodeParser();

@@ -15,12 +15,12 @@ export class SourceCodeParser {
       const ast = parse(sourceCode);
 
       if (!ast.program.body?.[0]) {
-        throw new Error("Missing program body");
+        throw Error("Missing program body");
       }
 
       return ast.program.body[0];
     } catch (error) {
-      throw new Error("Failed to parse soruce code");
+      throw Error("Failed to parse soruce code");
     }
   }
 }
